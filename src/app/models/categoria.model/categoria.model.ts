@@ -1,1 +1,4 @@
-export interface CategoriaModel {}
+export interface CategoriaModel {
+  id?: number;
+  nombre: string;
+}
