@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="header">
+    <h2>🪑 Mesas</h2>
+    <button class="btn-primary" (click)="abrirNuevo()">+ Nueva mesa</button>
+  </div>
+
+  <p class="mensaje" *ngIf="mensaje">✅ {{ mensaje }}</p>
+  <p class="error" *ngIf="error">❌ {{ error }}</p>
+
+  @if (mostrarFormulario) {
+    <div class="formulario">
+      <h3>{{ editando ? 'Editar mesa' : 'Nueva mesa' }}</h3>
+      <label>Número de mesa</label>
+      <input type="number" [(ngModel)]="formulario.numero" />
+      <label>Capacidad</label>
+      <input type="number" [(ngModel)]="formulario.capacidad" />
+      <label>Estado</label>
+      <select [(ngModel)]="formulario.estado">
+        <option value="Disponible">Disponible</option>
+        <option value="Ocupada">Ocupada</option>
+      </select>
+      <div class="form-btns">
+        <button class="btn-primary" (click)="guardar()">Guardar</button>
+        <button class="btn-secondary" (click)="cancelar()">Cancelar</button>
+      </div>
+    </div>
+  }
+
+  <table>
+    <thead>
+      <tr>
+        <th>Número</th>
+        <th>Capacidad</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (m of mesas; track m.id) {
+        <tr>
+          <td>Mesa {{ m.numero }}</td>
+          <td>{{ m.capacidad }} personas</td>
+          <td>{{ m.estado }}</td>
+          <td>
+            <button class="btn-edit" (click)="abrirEditar(m)">Editar</button>
+            <button class="btn-delete" (click)="eliminar(m.id)">Eliminar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

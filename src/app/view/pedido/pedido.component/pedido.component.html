@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="header">
+    <h2>📋 Pedidos</h2>
+    <button class="btn-primary" (click)="abrirNuevo()">+ Nuevo pedido</button>
+  </div>
+
+  <p class="mensaje" *ngIf="mensaje">✅ {{ mensaje }}</p>
+  <p class="error" *ngIf="error">❌ {{ error }}</p>
+
+  @if (mostrarFormulario) {
+    <div class="formulario">
+      <h3>Nuevo pedido</h3>
+      <label>ID de Mesa</label>
+      <input type="number" [(ngModel)]="formulario.mesaId" placeholder="Número de mesa" />
+      <div class="form-btns">
+        <button class="btn-primary" (click)="guardar()">Crear pedido</button>
+        <button class="btn-secondary" (click)="cancelar()">Cancelar</button>
+      </div>
+    </div>
+  }
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Mesa</th>
+        <th>Estado</th>
+        <th>Fecha</th>
+        <th>Cambiar estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of pedidos; track p.id) {
+        <tr>
+          <td>#{{ p.id }}</td>
+          <td>Mesa {{ p.mesaId }}</td>
+          <td><span class="estado">{{ p.estado }}</span></td>
+          <td>{{ p.fecha | date:'short' }}</td>
+          <td>
+            <select (change)="cambiarEstado(p.id, $any($event.target).value)">
+              <option value="Pendiente">Pendiente</option>
+              <option value="EnProceso">En proceso</option>
+              <option value="Entregado">Entregado</option>
+              <option value="Cancelado">Cancelado</option>
+            </select>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

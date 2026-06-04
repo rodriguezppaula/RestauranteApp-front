@@ -1,0 +1,48 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h1>🍽️ RestauranteApp</h1>
+
+    <div class="tabs">
+      <button [class.active]="modo === 'login'" (click)="modo = 'login'">Iniciar sesión</button>
+      <button [class.active]="modo === 'register'" (click)="modo = 'register'">Registrarse</button>
+    </div>
+
+    <!-- LOGIN -->
+    <form *ngIf="modo === 'login'" (ngSubmit)="login()">
+      <label>Correo</label>
+      <input type="email" [(ngModel)]="loginData.email" name="email" required placeholder="correo@ejemplo.com" />
+
+      <label>Contraseña</label>
+      <input type="password" [(ngModel)]="loginData.password" name="password" required placeholder="••••••••" />
+
+      <p class="error" *ngIf="error">{{ error }}</p>
+      <button type="submit" [disabled]="cargando">
+        {{ cargando ? 'Entrando...' : 'Iniciar sesión' }}
+      </button>
+    </form>
+
+    <!-- REGISTRO -->
+    <form *ngIf="modo === 'register'" (ngSubmit)="register()">
+      <label>Nombre</label>
+      <input type="text" [(ngModel)]="registerData.nombre" name="nombre" required placeholder="Tu nombre" />
+
+      <label>Correo</label>
+      <input type="email" [(ngModel)]="registerData.email" name="email" required placeholder="correo@ejemplo.com" />
+
+      <label>Contraseña</label>
+      <input type="password" [(ngModel)]="registerData.password" name="password" required placeholder="••••••••" />
+
+      <label>Rol</label>
+      <select [(ngModel)]="registerData.rol" name="rol">
+        <option value="Cliente">Cliente</option>
+        <option value="Mesero">Mesero</option>
+        <option value="Admin">Admin</option>
+      </select>
+
+      <p class="error" *ngIf="error">{{ error }}</p>
+      <button type="submit" [disabled]="cargando">
+        {{ cargando ? 'Registrando...' : 'Registrarse' }}
+      </button>
+    </form>
+  </div>
+</div>

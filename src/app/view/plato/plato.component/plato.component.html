@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="header">
+    <h2>🍕 Platos</h2>
+    @if (auth.isAdmin()) {
+      <button class="btn-primary" (click)="abrirNuevo()">+ Nuevo plato</button>
+    }
+  </div>
+
+  <p class="mensaje" *ngIf="mensaje">✅ {{ mensaje }}</p>
+  <p class="error" *ngIf="error">❌ {{ error }}</p>
+
+  @if (mostrarFormulario) {
+    <div class="formulario">
+      <h3>{{ editando ? 'Editar plato' : 'Nuevo plato' }}</h3>
+      <label>Nombre</label>
+      <input [(ngModel)]="formulario.nombre" placeholder="Nombre del plato" />
+      <label>Descripción</label>
+      <input [(ngModel)]="formulario.descripcion" placeholder="Descripción" />
+      <label>Precio</label>
+      <input type="number" [(ngModel)]="formulario.precio" placeholder="0.00" />
+      <label>Categoría ID</label>
+      <input type="number" [(ngModel)]="formulario.categoriaId" placeholder="ID de categoría" />
+      <label>
+        <input type="checkbox" [(ngModel)]="formulario.disponible" /> Disponible
+      </label>
+      <div class="form-btns">
+        <button class="btn-primary" (click)="guardar()">Guardar</button>
+        <button class="btn-secondary" (click)="cancelar()">Cancelar</button>
+      </div>
+    </div>
+  }
+
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Disponible</th>
+        @if (auth.isAdmin()) { <th>Acciones</th> }
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of platos; track p.id) {
+        <tr>
+          <td>{{ p.nombre }}</td>
+          <td>{{ p.descripcion }}</td>
+          <td>${{ p.precio }}</td>
+          <td>{{ p.disponible ? '✅' : '❌' }}</td>
+          @if (auth.isAdmin()) {
+            <td>
+              <button class="btn-edit" (click)="abrirEditar(p)">Editar</button>
+              <button class="btn-delete" (click)="eliminar(p.id)">Eliminar</button>
+            </td>
+          }
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="header">
+    <h2>📂 Categorías</h2>
+    <button class="btn-primary" (click)="abrirNuevo()">+ Nueva categoría</button>
+  </div>
+
+  <p class="mensaje" *ngIf="mensaje">✅ {{ mensaje }}</p>
+  <p class="error" *ngIf="error">❌ {{ error }}</p>
+
+  @if (mostrarFormulario) {
+    <div class="formulario">
+      <h3>{{ editando ? 'Editar categoría' : 'Nueva categoría' }}</h3>
+      <label>Nombre</label>
+      <input [(ngModel)]="formulario.nombre" placeholder="Nombre de la categoría" />
+      <div class="form-btns">
+        <button class="btn-primary" (click)="guardar()">Guardar</button>
+        <button class="btn-secondary" (click)="cancelar()">Cancelar</button>
+      </div>
+    </div>
+  }
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (c of categorias; track c.id) {
+        <tr>
+          <td>{{ c.id }}</td>
+          <td>{{ c.nombre }}</td>
+          <td>
+            <button class="btn-edit" (click)="abrirEditar(c)">Editar</button>
+            <button class="btn-delete" (click)="eliminar(c.id)">Eliminar</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
