@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -51,3 +52,14 @@ cambiarEstado(id: number, estado: string) {
 
   cancelar() { this.mostrarFormulario = false; this.error = ''; }
 }
+=======
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-pedido.component',
+  imports: [],
+  templateUrl: './pedido.component.html',
+  styleUrl: './pedido.component.css',
+})
+export class PedidoComponent {}
+>>>>>>> 231e3970ecbbae4c590ae37fd3b46042c89b7ff0

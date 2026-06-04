@@ -1,63 +1,82 @@
-<<<<<<< HEAD
-# RestaurateProyect
+# 🍽️ RestauranteApp — Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.13.
+Aplicación web desarrollada en Angular 21 para la gestión de un restaurante. Permite autenticación con JWT, manejo de roles diferenciados y operaciones CRUD sobre las entidades del dominio.
 
-## Development server
+## Tecnologías
+- Angular 21
+- TypeScript
+- JWT (JSON Web Tokens)
+- HTTP Interceptors
+- Guards (AuthGuard, RoleGuard)
 
-To start a local development server, run:
+## Requisitos previos
+- Node.js v20 o superior
+- Angular CLI v21
+- El backend debe estar corriendo en `https://localhost:7166`
 
+## Instalación
+
+1. Clona el repositorio:
 ```bash
-ng serve
+git clone https://github.com/rodriguezppaula/RestauranteApp-front.git
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
+2. Entra a la carpeta:
 ```bash
-ng generate component component-name
+cd RestauranteApp-front-main
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+3. Instala las dependencias:
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
-
-To build the project run:
-
+4. Inicia el servidor de desarrollo:
 ```bash
-ng build
+ng serve -o
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+5. Abre el navegador en `http://localhost:4200`
 
-## Running unit tests
+## Credenciales de prueba
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+| Rol | Email | Contraseña |
+|-----|-------|------------|
+| Admin | admin@test.com | Admin123 |
+| Mesero | mesero@test.com | Mesero123 |
+| Cliente | cliente@test.com | Cliente123 |
 
-```bash
-ng test
-```
+## Funcionalidades por rol
 
-## Running end-to-end tests
+| Módulo | Admin | Mesero | Cliente |
+|--------|-------|--------|---------|
+| Platos (ver) | ✅ | ✅ | ✅ |
+| Platos (CRUD) | ✅ | ❌ | ❌ |
+| Pedidos | ✅ | ✅ | ✅ |
+| Mesas | ✅ | ✅ | ❌ |
+| Categorías | ✅ | ❌ | ❌ |
+| Usuarios | ✅ | ❌ | ❌ |
 
-For end-to-end (e2e) testing, run:
+## Estructura del proyecto
 
-```bash
-ng e2e
-```
+    src/
+    ├── app/
+    │   ├── guards/          # AuthGuard y RoleGuard
+    │   ├── interceptors/    # Interceptor HTTP para JWT
+    │   ├── models/          # Interfaces TypeScript
+    │   ├── services/        # Servicios HTTP
+    │   └── view/            # Componentes de vista
+    │       ├── auth/        # Login y Registro
+    │       ├── navbar/      # Barra de navegación
+    │       ├── plato/       # CRUD Platos
+    │       ├── categoria/   # CRUD Categorías
+    │       ├── mesa/        # CRUD Mesas
+    │       ├── pedido/      # CRUD Pedidos
+    │       └── usuario/     # CRUD Usuarios
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-=======
-# RestauranteApp-front
->>>>>>> a8fc656de63b7474f8f834c2f4e3e47d38d9a431
+## Seguridad
+- El token JWT se almacena en localStorage
+- El interceptor HTTP inyecta el token en cada petición
+- AuthGuard protege todas las rutas privadas
+- RoleGuard restringe acceso según el rol del usuario
+- Manejo diferenciado de errores 401 (sin sesión) y 403 (sin permiso)

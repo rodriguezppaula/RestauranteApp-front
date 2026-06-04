@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: #f0f2f5;
+}
+
+/* NAVBAR RESPONSIVE */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1rem;
+  }
+
+  .links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem !important;
+  }
+
+  .links a {
+    font-size: 0.85rem !important;
+  }
+}
+
+/* TABLAS RESPONSIVE */
+@media (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .container {
+    padding: 1rem !important;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start !important;
+  }
+
+  .formulario {
+    max-width: 100% !important;
+  }
+}
+
+/* AUTH RESPONSIVE */
+@media (max-width: 480px) {
+  .auth-card {
+    margin: 1rem;
+    padding: 1.5rem !important;
+  }
+}

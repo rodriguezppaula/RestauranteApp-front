@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsuarioService } from '../../../services/usuario.service/usuario.service';
@@ -33,3 +34,14 @@ export class UsuarioComponent implements OnInit {
     });
   }
 }
+=======
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-usuario.component',
+  imports: [],
+  templateUrl: './usuario.component.html',
+  styleUrl: './usuario.component.css',
+})
+export class UsuarioComponent {}
+>>>>>>> 231e3970ecbbae4c590ae37fd3b46042c89b7ff0

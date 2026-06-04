@@ -1,10 +1,14 @@
 import { Routes } from '@angular/router';
+<<<<<<< HEAD
 import { AuthComponent } from './view/auth/auth.component/auth.component';
+=======
+>>>>>>> 231e3970ecbbae4c590ae37fd3b46042c89b7ff0
 import { CategoriaComponent } from './view/categoria/categoria.component/categoria.component';
 import { MesaComponent } from './view/mesa/mesa.component/mesa.component';
 import { PedidoComponent } from './view/pedido/pedido.component/pedido.component';
 import { PlatoComponent } from './view/plato/plato.component/plato.component';
 import { UsuarioComponent } from './view/usuario/usuario.component/usuario.component';
+<<<<<<< HEAD
 import { authGuard } from './guards/auth.guard';
 import { roleGuard } from './guards/role.guard';
 
@@ -37,3 +41,18 @@ export const routes: Routes = [
   { path: 'acceso-denegado', loadComponent: () => import('./view/acceso-denegado/acceso-denegado.component').then(m => m.AccesoDenegadoComponent) },
   { path: '**', redirectTo: 'auth' }
 ];
+=======
+import { AuthComponent } from './view/auth/auth.component/auth.component';
+
+export const routes: Routes = [
+    { path: '', redirectTo:'auth', pathMatch: 'full'},
+    { path: 'categoria', component: CategoriaComponent },
+    { path: 'mesa', component: MesaComponent },
+    { path: 'pedido', component: PedidoComponent },
+    { path: 'plato', component: PlatoComponent },
+    { path: 'usuario', component: UsuarioComponent },
+    { path: 'auth', component: AuthComponent }
+
+];
+
+>>>>>>> 231e3970ecbbae4c590ae37fd3b46042c89b7ff0
