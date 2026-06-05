@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -27,10 +26,7 @@ export class AuthComponent {
     this.cargando = true;
     this.authService.login(this.loginData).subscribe({
       next: () => this.router.navigate(['/plato']),
-      error: () => {
-        this.error = 'Correo o contraseña incorrectos.';
-        this.cargando = false;
-      }
+      error: () => { this.error = 'Correo o contraseña incorrectos.'; this.cargando = false; }
     });
   }
 
@@ -39,21 +35,7 @@ export class AuthComponent {
     this.cargando = true;
     this.authService.register(this.registerData).subscribe({
       next: () => this.router.navigate(['/plato']),
-      error: () => {
-        this.error = 'Error al registrar. Verifica los datos.';
-        this.cargando = false;
-      }
+      error: () => { this.error = 'Error al registrar. Verifica los datos.'; this.cargando = false; }
     });
   }
 }
-=======
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-auth.component',
-  imports: [],
-  templateUrl: './auth.component.html',
-  styleUrl: './auth.component.css',
-})
-export class AuthComponent {}
->>>>>>> 231e3970ecbbae4c590ae37fd3b46042c89b7ff0

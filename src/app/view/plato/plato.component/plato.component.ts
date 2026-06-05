@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -17,12 +16,20 @@ export class PlatoComponent implements OnInit {
   auth = inject(AuthService);
 
   platos: PlatoModel[] = [];
+  busqueda = '';
   mensaje = '';
   error = '';
   mostrarFormulario = false;
   editando = false;
 
   formulario: PlatoModel = this.formularioVacio();
+
+  get platosFiltrados(): PlatoModel[] {
+    return this.platos.filter(p =>
+      p.nombre.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+      p.descripcion.toLowerCase().includes(this.busqueda.toLowerCase())
+    );
+  }
 
   formularioVacio(): PlatoModel {
     return { id: 0, nombre: '', descripcion: '', precio: 0, disponible: true, categoriaId: 0 };
@@ -77,14 +84,3 @@ export class PlatoComponent implements OnInit {
 
   cancelar() { this.mostrarFormulario = false; this.error = ''; }
 }
-=======
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-plato.component',
-  imports: [],
-  templateUrl: './plato.component.html',
-  styleUrl: './plato.component.css',
-})
-export class PlatoComponent {}
->>>>>>> 231e3970ecbbae4c590ae37fd3b46042c89b7ff0
