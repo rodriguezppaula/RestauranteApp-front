@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="container">
   <div class="header">
     <h2>🍕 Platos</h2>
@@ -6,6 +5,8 @@
       <button class="btn-primary" (click)="abrirNuevo()">+ Nuevo plato</button>
     }
   </div>
+
+  <input class="buscador" type="text" [(ngModel)]="busqueda" placeholder="🔍 Buscar plato por nombre o descripción..." />
 
   <p class="mensaje" *ngIf="mensaje">✅ {{ mensaje }}</p>
   <p class="error" *ngIf="error">❌ {{ error }}</p>
@@ -42,7 +43,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (p of platos; track p.id) {
+      @for (p of platosFiltrados; track p.id) {
         <tr>
           <td>{{ p.nombre }}</td>
           <td>{{ p.descripcion }}</td>
@@ -59,4 +60,3 @@
     </tbody>
   </table>
 </div>
-

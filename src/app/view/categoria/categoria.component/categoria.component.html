@@ -1,9 +1,10 @@
-<<<<<<< HEAD
 <div class="container">
   <div class="header">
     <h2>📂 Categorías</h2>
     <button class="btn-primary" (click)="abrirNuevo()">+ Nueva categoría</button>
   </div>
+
+  <input class="buscador" type="text" [(ngModel)]="busqueda" placeholder="🔍 Buscar categoría..." />
 
   <p class="mensaje" *ngIf="mensaje">✅ {{ mensaje }}</p>
   <p class="error" *ngIf="error">❌ {{ error }}</p>
@@ -29,7 +30,7 @@
       </tr>
     </thead>
     <tbody>
-      @for (c of categorias; track c.id) {
+      @for (c of categoriasFiltradas; track c.id) {
         <tr>
           <td>{{ c.id }}</td>
           <td>{{ c.nombre }}</td>
@@ -42,6 +43,3 @@
     </tbody>
   </table>
 </div>
-=======
-<p>categoria.component works!</p>
->>>>>>> 231e3970ecbbae4c590ae37fd3b46042c89b7ff0
