@@ -1,18 +1,21 @@
 <nav class="navbar">
-  <span class="brand">🍽️ RestauranteApp</span>
-  <div class="links">
-    <a routerLink="/plato" routerLinkActive="active">Platos</a>
-    <a routerLink="/pedido" routerLinkActive="active">Pedidos</a>
+  <span class="brand"> RestauranteApp</span>
+  <div class="links">
+    <a routerLink="/plato"    routerLinkActive="active">Platos</a>
+    <a routerLink="/pedido"   routerLinkActive="active">Pedidos</a>
+    <a routerLink="/categoria" routerLinkActive="active">Categorías</a>
 
-    @if (auth.isAdmin() || auth.isMesero()) {
-      <a routerLink="/mesa" routerLinkActive="active">Mesas</a>
-    }
-    @if (auth.isAdmin()) {
-      <a routerLink="/categoria" routerLinkActive="active">Categorías</a>
-      <a routerLink="/usuario" routerLinkActive="active">Usuarios</a>
-    }
+    @if (auth.isAdmin() || auth.isMesero()) {
+      <a routerLink="/mesa" routerLinkActive="active">Mesas</a>
+    }
+    @if (auth.isAdmin()) {
+      <a routerLink="/usuario" routerLinkActive="active">Usuarios</a>
+    }
 
-    <span class="rol">{{ auth.getRol() }}</span>
-    <button (click)="auth.logout()">Cerrar sesión</button>
-  </div>
+    <span class="usuario-info">
+      <span class="usuario-nombre">{{ auth.getNombre() }}</span>
+      <span class="rol">{{ auth.getRol() }}</span>
+    </span>
+    <button (click)="auth.logout()">Cerrar sesión</button>
+  </div>
 </nav>

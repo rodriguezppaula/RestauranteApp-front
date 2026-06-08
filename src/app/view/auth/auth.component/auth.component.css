@@ -95,3 +95,13 @@ button[type="submit"]:disabled {
   font-size: 0.85rem;
   margin: 0;
 }
+
+.nota-rol {
+  font-size: 0.82rem;
+  color: #555;
+  background: #fff8f0;
+  border-left: 3px solid #e67e22;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  margin: 0.25rem 0;
+}
