@@ -37,9 +37,9 @@
           <td><span class="estado">{{ p.estado }}</span></td>
           <td>{{ p.fecha | date:'short' }}</td>
           <td>
-            <select (change)="cambiarEstado(p.id, $any($event.target).value)">
+            <select [(ngModel)]="p.estado" (ngModelChange)="cambiarEstado(p.id, p.estado)">
               <option value="Pendiente">Pendiente</option>
-              <option value="EnProceso">En proceso</option>
+              <option value="En proceso">En proceso</option>
               <option value="Entregado">Entregado</option>
               <option value="Cancelado">Cancelado</option>
             </select>
